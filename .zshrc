@@ -123,5 +123,13 @@ alias vpn-d='protonvpn-cli d'
 # set keybindings to vim instead of emacs
 set -o vi
 
+# update function
+update() {
+        sudo nala update
+        sudo nala upgrade -y
+        sudo deb-get update && sudo deb-get upgrade -y
+        sudo flatpak update -y
+}
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
