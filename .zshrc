@@ -1,3 +1,6 @@
+# Welcome to my custom .zshrc profile! For the most part, I just mix and mash what others have done already!
+
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -104,8 +107,8 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="mate ~/.zshrc"
-alias ohmyzsh="mate ~/.oh-my-zsh"
+alias zshconfig="kate ~/.zshrc"
+alias ohmyzsh="kate ~/.oh-my-zsh"
 
 # other aliases
 ## set ls alias to show folders, executables, etc. as diff colors. sets folders 
@@ -129,6 +132,21 @@ update() {
         sudo nala upgrade -y
         sudo deb-get update && sudo deb-get upgrade -y
         sudo flatpak update -y
+}
+
+# change apt into nala. Disable if nala is not installed yet.
+# to install nala, do `sudo apt-get install nala`.
+# convert apt to nala
+apt() { 
+  command nala "$@"
+}
+sudo() {
+  if [ "$1" = "apt" ]; then
+    shift
+    command sudo nala "$@"
+  else
+    command sudo "$@"
+  fi
 }
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
